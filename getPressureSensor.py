@@ -10,4 +10,4 @@ def read_pressure():
     voltage = adc.read_adc_voltage(2, 0)
     pressure = converter(voltage)
 
-    return {"sensor": "pressureGauge", "value": pressure}
+    return {"sensor": "PS-001","name":"WaterPressure", "value": pressure}
