@@ -35,9 +35,9 @@ class SensorAPIHandler(BaseHTTPRequestHandler):
                 last_update_time = get_last_update()  # Fetch safely using the getter function
 
             response_data = {
-                "temperature": temperature_data,
-                "pressure": read_pressure(),
                 "last_update": last_update_time,
+                "pressure": read_pressure(),                
+                "temperature": temperature_data,
             }
             self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
@@ -49,9 +49,9 @@ class SensorAPIHandler(BaseHTTPRequestHandler):
             temperature_data = read_all_temperatures()
             pressure_data = read_pressure()
             response_data = {
-                "temperature": temperature_data,
+                "last_update": time.time(),
                 "pressure": pressure_data,
-                "hit_time": time.time(),
+                "temperature": temperature_data,
             }
             self.wfile.write(json.dumps(response_data).encode("utf-8"))
 
